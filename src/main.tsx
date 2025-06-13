@@ -8,11 +8,16 @@ import IndexPage from './pages/IndexPage.tsx'
 import { Provider } from "./components/ui/provider"
 import { Provider as ReduxProvider } from 'react-redux'
 import store from './store/store.ts'
+import CreateOrderPage from "./pages/CreateOrderPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <IndexPage/>,
+  },
+  {
+    path: "/create",
+    element: <CreateOrderPage/>,
   },
 ]);
 
