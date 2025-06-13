@@ -15,6 +15,17 @@ interface Order {
     comment: string,
 }
 
+interface IncompleteOrder {
+    client: string,
+    phone: string,
+    delivery_date: string,
+    delivery_address: string,
+    amount: number,
+    product_price: number,
+    delivery_price: number,
+    comment: string,
+}
+
 type OrderStatus = 'Создан' | 'Завершен' | 'Отменен';
 
 const initialState:OrderState = [
@@ -41,21 +52,26 @@ export const orderSlice = createSlice({
             state = [...state, action.payload]
         },
         completeOrder: (state, action: PayloadAction<number>) => {
-            state = state.map((order)=>{
-                if (order.id !== action.payload) return order;
-                return {...order, status:'Завершен'};
+            return state.map((order)=>{
+                if (order.id === action.payload) return {...order, status:'Завершен'};
+                return order;
             });
         },
         cancelOrder: (state, action: PayloadAction<number>) => {
-            state = state.map((order)=>{
-                if (order.id !== action.payload) return order;
-                return {...order, status:'Отменен'};
+            return state.map((order)=>{
+                if (order.id === action.payload) return {...order, status:'Отменен'};
+                return order;
             });
         },
+        createOrder: (state, action: PayloadAction<IncompleteOrder>) => {
+            const id = state.reduce((maxId, currentId)=>{
+                return maxId.id > currentId.id ? maxId : currentId;
+            }).id
+            state.push({...action.payload, status: 'Создан', id:id+1})
+        }
     },
 })
 
-export const {addOrder, completeOrder, cancelOrder } = orderSlice.actions
+export const { addOrder, completeOrder, cancelOrder, createOrder } = orderSlice.actions
 
 export default orderSlice.reducer
-
