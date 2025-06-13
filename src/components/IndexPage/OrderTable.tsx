@@ -27,9 +27,9 @@ function OrderTable() {
           </Table.Row>
         </Table.Header>
       <Table.Body>
-        { orders.map(order=>
+        { orders.map((order, index)=>
         <Table.Row key={order.id}>
-          <Table.Cell>{order.id}</Table.Cell>
+          <Table.Cell>{index+1}</Table.Cell>
           <Table.Cell>{order.client}</Table.Cell>
           <Table.Cell>{order.phone}</Table.Cell>
           <Table.Cell>{order.status}</Table.Cell>
