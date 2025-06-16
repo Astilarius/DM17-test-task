@@ -30,7 +30,7 @@ function AdressInput(props:InputComponentProps) {
       }
 
     return (
-    <Field.Root required={props.isRequired} className="order-data__input-field-group">
+    <Field.Root invalid={props.isValid} required={props.isRequired} className="order-data__input-field-group">
     <Field.Label className="order-data__input-field-title">
         {props.label}
     </Field.Label>
