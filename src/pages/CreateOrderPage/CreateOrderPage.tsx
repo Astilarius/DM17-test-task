@@ -138,8 +138,7 @@ function CreateOrderPage() {
                     setDeliveryPrice(Number(value.replace(/\D/g, "")))
                   }}
                   endAddon="RUB"
-                  isRequired={true}
-                  isError={error&&!deliveryPrice}
+                  isRequired={false}
                 />
                 <InputComponent
                   label="Дата"
