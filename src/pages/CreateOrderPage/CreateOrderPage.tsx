@@ -27,6 +27,7 @@ function CreateOrderPage() {
   
   const [products, setProducts] = useState<Product[]>([]);
 
+  const [error, setError] = useState(false);
   const [client, setClient] = useState("");
   const [phone, setPhone] = useState("");
   const [deliveryDate, setDeliveryDate] = useState(new Date());
@@ -61,24 +62,27 @@ function CreateOrderPage() {
   }
 
   function confirm(){
-    if (client && phone && deliveryDate && deliveryAddress && deliveryPrice)
-    dispatch(createOrder({
-      client: client,
-      phone: phone,
-      delivery_date: deliveryDate,
-      delivery_address: deliveryAddress,
-      amount: products.reduce((amount,product)=>{return amount+product.amount},0),
-      product_price: products.reduce((price,product)=>{return price+product.price},0),
-      delivery_price: deliveryPrice,
-      comment: comment,
-    }));
-    setClient('');
-    setPhone('');
-    setDeliveryDate(new Date());
-    setDeliveryAddress('');
-    setDeliveryPrice(0);
-    setComment('');
-    navigate("/")
+    if (client && phone && deliveryDate && deliveryAddress && deliveryPrice) {
+      dispatch(createOrder({
+        client: client,
+        phone: phone,
+        delivery_date: deliveryDate,
+        delivery_address: deliveryAddress,
+        amount: products.reduce((amount,product)=>{return amount+product.amount},0),
+        product_price: products.reduce((price,product)=>{return price+product.price},0),
+        delivery_price: deliveryPrice,
+        comment: comment,
+      }));
+      setClient('');
+      setPhone('');
+      setDeliveryDate(new Date());
+      setDeliveryAddress('');
+      setDeliveryPrice(0);
+      setComment('');
+      navigate("/")
+    } else {
+      setError(true)
+    }
   }
 
   return (
@@ -99,8 +103,8 @@ function CreateOrderPage() {
                 label="Номер телефона"
                 placeholder= "+7 (___) ___-__-__"
                 mask= "+7 (999) 999-99-99"
-                phone={phone}
-                setPhone={(phone:string)=>{
+                value={phone}
+                setValue={(phone:string)=>{
                   setPhone(phone)
                   setClient('')
                 }}
