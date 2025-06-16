@@ -1,10 +1,11 @@
-import { Table, Input } from "@chakra-ui/react"
+import { Table, Input, Field } from "@chakra-ui/react"
 import { useState } from "react";
 
 interface AddProductTableProps {
     products: Product[],
     setProducts: Function,
-    editProduct: Function
+    editProduct: Function,
+    error: boolean
 }
 
 interface Product{
@@ -115,36 +116,44 @@ function AddProductTable(props:AddProductTableProps){
         <Table.Row>
           <Table.Cell>{props.products.length + 1}</Table.Cell>
           <Table.Cell>
+          <Field.Root invalid={props.error&&!title}>
             <Input
-              className="order-products__input"
+              className={props.error ? "" : "order-products__input"}
               value={title}
               onChange={(e)=>{setTitle(e.currentTarget.value)}}
               onBlur={addProductIfFull}
             />
+          </Field.Root>
           </Table.Cell>
           <Table.Cell>
+          <Field.Root invalid={props.error&&!art}>
             <Input
-              className="order-products__input"
+              className={props.error ? "" : "order-products__input"}
               value={art}
               onChange={(e)=>{setArt(e.currentTarget.value.toUpperCase().replace(/[^A-Za-z0-9]/g, ""))}}
               onBlur={addProductIfFull}
             />
+          </Field.Root>
           </Table.Cell>
           <Table.Cell>
+          <Field.Root invalid={props.error&&!amount}>
             <Input
-              className="order-products__input"
+              className={props.error ? "" : "order-products__input"}
               value={amount || ''}
               onChange={(e)=>{setAmount(Number(e.currentTarget.value.replace(/\D/g, "")))}}
               onBlur={addProductIfFull}
             />
+          </Field.Root>
           </Table.Cell>
           <Table.Cell>
+          <Field.Root invalid={props.error&&!productPrice}>
             <Input
-              className="order-products__input"
+              className={props.error ? "" : "order-products__input"}
               value={productPrice || ''}
               onChange={(e)=>{setProductPrice(Number(e.currentTarget.value.replace(/\D/g, "")))}}
               onBlur={addProductIfFull}
             />
+          </Field.Root>
           </Table.Cell>
           <Table.Cell>
             <Input

@@ -109,12 +109,14 @@ function CreateOrderPage() {
                   setClient('')
                 }}
                 isRequired={true}
+                isError={error&&!phone}
               />
               <TextAreaInput
                 label="Комменатрий"
                 value={comment}
                 setValue={setComment}
                 isRequired={true}
+                isError={error&&!comment}
               />
               </div>
               <div className="order-data__input-block">
@@ -127,6 +129,7 @@ function CreateOrderPage() {
                     setClient('')
                   }}
                   isRequired={true}
+                  isError={error&&!deliveryAddress}
                 />
                 <InputComponent
                   label="Стоимость доставки"
@@ -136,6 +139,7 @@ function CreateOrderPage() {
                   }}
                   endAddon="RUB"
                   isRequired={true}
+                  isError={error&&!deliveryPrice}
                 />
                 <InputComponent
                   label="Дата"
@@ -144,8 +148,8 @@ function CreateOrderPage() {
                   setValue={(value:string)=>{
                     setDeliveryDate(new Date(value))
                   }}
-                  isRequired={true}
                   type="date"
+                  isRequired={false}
                 />
                 <Group>
                   <Button size="sm" onClick={setDeliveryDateToday}>Сегодня</Button>
@@ -158,6 +162,7 @@ function CreateOrderPage() {
           <div className="order-products">
           <h3 className="order-products__title">Товары к заказу</h3>
           <AddProductTable
+            error={error}
             products={products}
             setProducts={(products:Product[])=>{
               setProducts(products)

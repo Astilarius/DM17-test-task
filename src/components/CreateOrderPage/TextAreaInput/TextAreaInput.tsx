@@ -3,7 +3,7 @@ import type {InputComponentProps} from '../InputComponent/InputComponent.tsx'
 
 function TextAreaInput(props:InputComponentProps) {
     return (
-    <Field.Root invalid={props.isValid} required={props.isRequired} className="order-data__input-field-group">
+    <Field.Root invalid={props.isError&&props.isRequired} required={props.isRequired} className="order-data__input-field-group">
         <Field.Label className="order-data__input-field-title">
             {props.label}
         </Field.Label>
