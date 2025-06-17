@@ -61,7 +61,6 @@ function AdressInput(props:InputComponentProps) {
         <Input
           onBlur={()=>setOpen(false)}
           onFocus={openTooltip}
-          onPointerEnter={openTooltip}
 
           value={props.value}
           onChange={(e)=>inputAdress(e)}
