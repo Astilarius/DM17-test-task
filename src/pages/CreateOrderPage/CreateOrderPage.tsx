@@ -66,7 +66,7 @@ function CreateOrderPage() {
       dispatch(createOrder({
         client: client,
         phone: phone,
-        delivery_date: deliveryDate,
+        delivery_date: deliveryDate.getTime(),
         delivery_address: deliveryAddress,
         amount: products.reduce((amount,product)=>{return amount+product.amount},0),
         product_price: products.reduce((price,product)=>{return price+product.price},0),
