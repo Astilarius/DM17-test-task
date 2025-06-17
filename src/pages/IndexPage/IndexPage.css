@@ -1,0 +1,5 @@
+.index-page__title-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

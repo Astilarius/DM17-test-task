@@ -1,0 +1,30 @@
+.show-orders__table thead{
+    --chakra-colors-bg: #F3F4FB;
+}
+.show-orders__table thead tr th{
+    color: var(--text-600);
+}
+.show-orders__table tbody tr{
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+.show-orders__status {
+    padding: 0.25rem 0.615rem;
+    border: 1px solid;
+    border-radius: 4px;
+}
+.show-orders__status-1 {
+    color: var(--created-status-color);
+    border-color: var(--created-status-color);
+    background-color: var(--created-status-bg-color);
+}
+.show-orders__status-2 {
+    color: var(--cancelled-status-color);
+    border-color: var(--cancelled-status-color);
+    background-color: var(--cancelled-status-bg-color);
+}
+.show-orders__status-3 {
+    color: var(--finished-status-color);
+    border-color: var(--finished-status-color);
+    background-color: var(--finished-status-bg-color);
+}

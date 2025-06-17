@@ -7,6 +7,13 @@
     --input-border-color: #E2E8F0;
     --divider-line: #CBD5E0;
     --currency-block-color:#D8DBF3;
+
+    --created-status-color: #505CC8;
+    --created-status-bg-color: #ECEDF9;
+    --finished-status-color: #38A169;
+    --finished-status-bg-color: #F0FFF4;
+    --cancelled-status-color: #D92550;
+    --cancelled-status-bg-color: #FBE9EE;
 }
 html {
     font-size: 16px;

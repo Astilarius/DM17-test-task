@@ -18,14 +18,26 @@ interface IncompleteOrder {
     comment: string,
 }
 
-type OrderStatus = 'Создан' | 'Завершен' | 'Отменен';
+interface OrderStatusCreated {
+    value: 'Создан',
+    type: 1,
+};
+interface OrderStatusCancelled {
+    value: 'Отменен',
+    type: 2,
+};
+interface OrderStatusFinished {
+    value: 'Завершен',
+    type: 3,
+};
+type OrderStatus = OrderStatusCreated | OrderStatusCancelled | OrderStatusFinished
 
 const initialState:OrderState = [
     {
         id:1,
         client:"Руслан",
         phone:"7015151151",
-        status: 'Создан',
+        status: {value:'Создан', type: 1},
         delivery_date: new Date(),
         delivery_address: "г. Москва, ул. Макаёнка, 20",
         amount: 3,
@@ -45,13 +57,13 @@ export const orderSlice = createSlice({
         },
         completeOrder: (state, action: PayloadAction<number>) => {
             return state.map((order)=>{
-                if (order.id === action.payload) return {...order, status:'Завершен'};
+                if (order.id === action.payload) return {...order, status:{value:'Завершен', type:3}};
                 return order;
             });
         },
         cancelOrder: (state, action: PayloadAction<number>) => {
             return state.map((order)=>{
-                if (order.id === action.payload) return {...order, status:'Отменен'};
+                if (order.id === action.payload) return {...order, status:{value:'Отменен', type:2}};
                 return order;
             });
         },
@@ -59,7 +71,7 @@ export const orderSlice = createSlice({
             const id = state.reduce((maxId, currentId)=>{
                 return maxId.id > currentId.id ? maxId : currentId;
             }).id
-            state.push({...action.payload, status: 'Создан', id:id+1})
+            state.push({...action.payload, status: {value:'Создан', type:1}, id:id+1})
         }
     },
 })

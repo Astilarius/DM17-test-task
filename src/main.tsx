@@ -4,7 +4,7 @@ import {
 } from "react-router";
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import IndexPage from './pages/IndexPage.tsx'
+import IndexPage from './pages/IndexPage/IndexPage.tsx'
 import { Provider } from "./components/ui/provider"
 import { Provider as ReduxProvider } from 'react-redux'
 import store from './store/store.ts'
