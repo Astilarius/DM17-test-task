@@ -151,9 +151,9 @@ function CreateOrderPage() {
                   isRequired={false}
                 />
                 <Group>
-                  <Button size="sm" onClick={setDeliveryDateToday}>Сегодня</Button>
-                  <Button size="sm" onClick={setDeliveryDateTomorrow}>Завтра</Button>
-                  <Button size="sm" onClick={setDeliveryDate2DaysFromToday}>Послезавтра</Button>
+                  <Button className="outline-button-secondary" size="sm" onClick={setDeliveryDateToday}>Сегодня</Button>
+                  <Button className="outline-button-primary" size="sm" onClick={setDeliveryDateTomorrow}>Завтра</Button>
+                  <Button className="outline-button-secondary" size="sm" onClick={setDeliveryDate2DaysFromToday}>Послезавтра</Button>
                 </Group>
               </div>
             </div>            
@@ -161,6 +161,7 @@ function CreateOrderPage() {
           <div className="order-products">
           <h3 className="order-products__title">Товары к заказу</h3>
           <AddProductTable
+            deliveryPrice={deliveryPrice}
             error={error}
             products={products}
             setProducts={(products:Product[])=>{
@@ -170,24 +171,10 @@ function CreateOrderPage() {
               editProduct(newProduct)
             }}
           />
-          <div className="total-price-table">
-            <div className="total-price-table__row">
-              <span>Сумма</span>
-              <span>{products.reduce((totalPrice, currentProduct)=>{
-                return totalPrice + currentProduct.price * currentProduct.amount
-              },0)}</span>
-            </div>
-            <div className="total-price-table__row">
-              <span>Сумма с доставкой</span>
-              <span>{products.reduce((totalPrice, currentProduct)=>{
-                return totalPrice + currentProduct.price * currentProduct.amount
-              },0) + deliveryPrice}</span>
-            </div>
+          <div className="end-button-block">
+            <Button className="end-button-block__button button-primary" colorPalette={'blue'} onClick={confirm}>Создать</Button>
+            <Button className="end-button-block__button button-secondary" colorPalette={'blue'} onClick={()=>navigate("/")}>Отменить</Button>
           </div>
-            <div className="end-button-block">
-              <Button colorPalette={'blue'} onClick={confirm}>Создать</Button>
-              <Button colorPalette={'blue'} onClick={()=>navigate("/")}>Отменить</Button>
-            </div>
           </div>
         </div>
       </div>

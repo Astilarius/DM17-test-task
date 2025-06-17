@@ -9,6 +9,7 @@ import { Provider } from "./components/ui/provider"
 import { Provider as ReduxProvider } from 'react-redux'
 import store from './store/store.ts'
 import CreateOrderPage from "./pages/CreateOrderPage/CreateOrderPage.tsx";
+import './main.css'
 
 const router = createBrowserRouter([
   {

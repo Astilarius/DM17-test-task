@@ -1,11 +1,13 @@
 import { Table, Input, Field } from "@chakra-ui/react"
 import { useState } from "react";
+import './AddProductTable.css'
 
 interface AddProductTableProps {
     products: Product[],
     setProducts: Function,
     editProduct: Function,
-    error: boolean
+    error: boolean,
+    deliveryPrice: number
 }
 
 interface Product{
@@ -50,7 +52,7 @@ function AddProductTable(props:AddProductTableProps){
     }
 
     return (
-        <Table.Root>
+      <Table.Root className="order-products__table">
         <Table.ColumnGroup>
           <Table.Column htmlWidth="20px" />
           <Table.Column htmlWidth="260px" />
@@ -172,6 +174,18 @@ function AddProductTable(props:AddProductTableProps){
               </Table.Cell>
             </Table.Row> : ''
         }
+        <Table.Row className="order-products__table-price-row">
+          <Table.Cell colSpan={4}>СУММА</Table.Cell>
+          <Table.Cell>{props.products.reduce((totalPrice, currentProduct)=>{
+                return totalPrice + currentProduct.price * currentProduct.amount
+              },0)}</Table.Cell>
+        </Table.Row>
+        <Table.Row className="order-products__table-price-row">
+          <Table.Cell colSpan={4}>СУММА С ДОСТАВКОЙ</Table.Cell>
+          <Table.Cell>{props.products.reduce((totalPrice, currentProduct)=>{
+                return totalPrice + currentProduct.price * currentProduct.amount
+              },0) + props.deliveryPrice}</Table.Cell>
+        </Table.Row>
       </Table.Body>
     </Table.Root>
     )

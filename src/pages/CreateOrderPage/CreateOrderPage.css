@@ -7,25 +7,13 @@
     width: 100%;
 }
 .order-data {
-    max-width: 25rem;
+    width: 25rem;
+    min-width: 25rem;
     padding-right: 2.5rem;
-    border-right: 1px solid #CBD5E0;
-}
-.order-data__input-field-group {
-    margin-bottom: 1rem;
-}
-.order-data__input-field {
-    width: 100%;
-}
-.order-data__copy-button {
-    width: 42px;
-    height: 42px;
-}
-.order-data__input-field-title {
-    font-size: 0.75rem;
-    font-weight: 400;
+    border-right: 1px solid var(--divider-line);
 }
 .order-data__input-block-title {
+    color: var(--text-600);
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 500;
@@ -40,40 +28,13 @@
     font-size: 1rem;
     font-weight: 500;
 }
-.order-products__input {
-    padding: 0;
-    border: 0;
-}
-.order-products__input:focus-visible {
-    outline: 0;
-}
-.order-products__fill-data-message {
-    text-align: center;
-}
-.total-price-table {
-    width: 63.7%;
-    display: flex;
-    flex-direction: column;
-}
-.total-price-table__row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.75rem 0 0.5rem 0;
-}
 .end-button-block {
     width: 100%;
     gap: 1rem;
     display: flex;
     flex-direction: row-reverse;
+    margin-top: 5rem;
 }
-
-
-body {
-    padding: 2.5rem;
-}
-.page-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2.5rem;
+.end-button-block__button {
+    width: 140px;
 }

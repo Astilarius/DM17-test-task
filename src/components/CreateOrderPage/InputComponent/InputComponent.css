@@ -1,0 +1,18 @@
+
+.order-data__input-field-group {
+    margin-bottom: 1rem;
+}
+.order-data__input-field {
+    width: 100%;
+}
+.order-data__input {
+    border-color: var(--input-border-color);
+}
+.order-data__input-field-title {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.order-data__input-group div {
+    background-color: var(--currency-block-color);
+    color: var(--text-600);
+}

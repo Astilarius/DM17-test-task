@@ -1,4 +1,5 @@
 import { Field, Input, InputGroup } from "@chakra-ui/react"
+import './InputComponent.css'
 
 export interface InputComponentProps {
     label: string,
@@ -17,8 +18,9 @@ function InputComponent(props:InputComponentProps) {
         <Field.Label className="order-data__input-field-title">
             {props.label}
         </Field.Label>
-        <InputGroup endAddon={props.endAddon}>
+        <InputGroup className="order-data__input-group" endAddon={props.endAddon}>
             <Input
+                className="order-data__input"
                 type={props.type}
                 value={props.value}
                 onChange={(e) => {

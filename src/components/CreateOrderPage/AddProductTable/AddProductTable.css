@@ -1,0 +1,39 @@
+.order-products__table thead{
+    --chakra-colors-bg: #F3F4FB;
+}
+.order-products__table thead tr th{
+    color: var(--text-600);
+}
+.order-products__table tbody tr:not(.order-products__table-price-row){
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+.order-products__table tbody tr:nth-last-child(3){
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.order-products__table tbody tr td input{
+    max-height: 16px;
+}
+.order-products__table-price-row{
+    color: var(--text-700);
+    border-left-width: 0;
+    border-right-width: 0;
+}
+.order-products__table-price-row td{
+    border-bottom-width: 0;
+    border-top-width: 0;
+}
+.order-products__table-price-row td:last-child{
+    font-weight: 600;
+}
+.order-products__input {
+    padding: 0;
+    border: 0;
+}
+.order-products__input:focus-visible {
+    outline: 0;
+}
+.order-products__fill-data-message {
+    text-align: center;
+}

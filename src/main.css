@@ -1,0 +1,42 @@
+:root {
+    --text-600: #595B83;
+    --text-700: #484A6A;
+    --white: #ffffff;
+    --button-color: #3743AF;
+    --outline-button-color: #3743AF;
+    --input-border-color: #E2E8F0;
+    --divider-line: #CBD5E0;
+    --currency-block-color:#D8DBF3;
+}
+html {
+    font-size: 16px;
+}
+body {
+    padding: 2.5rem;
+    color: var(--text-600);
+}
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+.button-primary{
+    color: var(--white);
+    background-color: var(--button-color);
+    border: 0;
+}
+.button-secondary{    
+    color: var(--button-color);
+    background-color: var(--white);
+    border: 0;
+}
+.outline-button-primary{
+    background-color: var(--outline-button-color);
+    color: var(--white);
+}
+.outline-button-secondary{
+    background-color: var(--white);
+    color:  var(--outline-button-color);
+    border-color:  var(--outline-button-color);
+}

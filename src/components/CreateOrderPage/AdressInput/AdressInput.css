@@ -1,0 +1,8 @@
+.order-data__copy-button {
+    border-color: var(--input-border-color);
+    width: 42px;
+    height: 42px;
+}
+.order-data__copy-button img {
+    min-width: 24px;
+}
