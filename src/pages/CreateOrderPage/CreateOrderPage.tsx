@@ -115,8 +115,7 @@ function CreateOrderPage() {
                 label="Комменатрий"
                 value={comment}
                 setValue={setComment}
-                isRequired={true}
-                isError={error&&!comment}
+                isRequired={false}
               />
               </div>
               <div className="order-data__input-block">
