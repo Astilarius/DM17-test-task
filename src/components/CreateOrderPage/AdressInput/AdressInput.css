@@ -6,3 +6,11 @@
 .order-data__copy-button img {
     min-width: 24px;
 }
+.order-data__adress-input-tooltip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.order-data__adress-input-tooltip-button {
+    pointer-events: all;
+}
