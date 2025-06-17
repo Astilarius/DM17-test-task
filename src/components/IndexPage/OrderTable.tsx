@@ -6,7 +6,8 @@ import { Button, ButtonGroup } from "@chakra-ui/react"
 import './OrderTable.css'
 
 function OrderTable() {
-  const orders = useAppSelector(state => state.orders);
+  const orders = useAppSelector(state => state.orders.value);
+  console.log(orders)
   const dispatch: AppDispatch = useAppDispatch();
 
   return (
@@ -34,7 +35,7 @@ function OrderTable() {
           <Table.Cell>{order.client}</Table.Cell>
           <Table.Cell>{order.phone}</Table.Cell>
           <Table.Cell><div className={`show-orders__status show-orders__status-${order.status.type}`}>{order.status.value}</div></Table.Cell>
-          <Table.Cell>{`${String(order.delivery_date.getDay()).padStart(2, "0")}.${String(order.delivery_date.getMonth()).padStart(2, "0")}.${String(order.delivery_date.getFullYear()).padStart(2, "0")}`}</Table.Cell>
+          <Table.Cell>{`${String(new Date(order.delivery_date).getDay()).padStart(2, "0")}.${String(new Date(order.delivery_date).getMonth()).padStart(2, "0")}.${String(new Date(order.delivery_date).getFullYear()).padStart(2, "0")}`}</Table.Cell>
           <Table.Cell>{order.delivery_address}</Table.Cell>
           <Table.Cell>{order.amount}</Table.Cell>
           <Table.Cell>{order.product_price}</Table.Cell>

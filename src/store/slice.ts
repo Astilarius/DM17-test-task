@@ -1,6 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 
-type OrderState = Order[]
+interface OrderState {
+    value: Order[]
+}
+// type OrderState = Order[]
 
 interface Order extends IncompleteOrder {
     id: number,
@@ -10,7 +13,7 @@ interface Order extends IncompleteOrder {
 interface IncompleteOrder {
     client: string,
     phone: string,
-    delivery_date: Date,
+    delivery_date: number,
     delivery_address: string,
     amount: number,
     product_price: number,
@@ -32,20 +35,22 @@ interface OrderStatusFinished {
 };
 type OrderStatus = OrderStatusCreated | OrderStatusCancelled | OrderStatusFinished
 
-const initialState:OrderState = [
-    {
-        id:1,
-        client:"Руслан",
-        phone:"7015151151",
-        status: {value:'Создан', type: 1},
-        delivery_date: new Date(),
-        delivery_address: "г. Москва, ул. Макаёнка, 20",
-        amount: 3,
-        product_price: 2500,
-        delivery_price: 200,
-        comment: 'Звоните на номер'
-    }
-]
+const initialState:OrderState = {
+    value:[
+        {
+            id:1,
+            client:"Руслан",
+            phone:"7015151151",
+            status: {value:'Создан', type: 1},
+            delivery_date: new Date().getTime(),
+            delivery_address: "г. Москва, ул. Макаёнка, 20",
+            amount: 3,
+            product_price: 2500,
+            delivery_price: 200,
+            comment: 'Звоните на номер'
+        }
+    ]
+}
 
 
 export const orderSlice = createSlice({
@@ -53,25 +58,25 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {
         addOrder: (state, action: PayloadAction<Order>) => {
-            state = [...state, action.payload]
+            state.value = [...state.value, action.payload]
         },
         completeOrder: (state, action: PayloadAction<number>) => {
-            return state.map((order)=>{
+            state.value = state.value.map((order)=>{
                 if (order.id === action.payload) return {...order, status:{value:'Завершен', type:3}};
                 return order;
             });
         },
         cancelOrder: (state, action: PayloadAction<number>) => {
-            return state.map((order)=>{
+            state.value = state.value.map((order)=>{
                 if (order.id === action.payload) return {...order, status:{value:'Отменен', type:2}};
                 return order;
             });
         },
         createOrder: (state, action: PayloadAction<IncompleteOrder>) => {
-            const id = state.reduce((maxId, currentId)=>{
+            const id = state.value.reduce((maxId, currentId)=>{
                 return maxId.id > currentId.id ? maxId : currentId;
             }).id
-            state.push({...action.payload, status: {value:'Создан', type:1}, id:id+1})
+            state.value.push({...action.payload, status: {value:'Создан', type:1}, id:id+1})
         }
     },
 })
