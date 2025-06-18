@@ -1,5 +1,4 @@
-import { Button, Field, Group, Icon, Input } from "@chakra-ui/react"
-import CopyIcon from  '../../../assets/FiCopy.svg'
+import { Button, Field, Group, Input } from "@chakra-ui/react"
 import { Tooltip } from "../../ui/tooltip"
 import type {InputComponentProps} from '../InputComponent/InputComponent.tsx'
 import {token} from '../../../token.ts'
