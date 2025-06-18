@@ -13,7 +13,11 @@
 .order-data__copy-button svg {
     min-width: 24px;
 }
+div:has(.order-data__adress-input-tooltip) {
+    min-width: fit-content;
+}
 .order-data__adress-input-tooltip {
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

@@ -14,7 +14,6 @@ function AdressInput(props:InputComponentProps) {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   
   function inputAdress(e:React.ChangeEvent<HTMLInputElement>) {
-    setOpen(value=>!value)
     props.setValue(e.currentTarget.value)
     const apiUrl = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address ';
     const data = {
@@ -34,13 +33,15 @@ function AdressInput(props:InputComponentProps) {
       .then(response => response.json())
       .then(result => {
         setSuggestions(result.suggestions)
-        console.log(result.suggestions)
+        openTooltip()
       })
   }
 
   function openTooltip(){
     if (suggestions.length > 0) {
       setOpen(true)
+    } else {
+      setOpen(false)
     }
   }
 
@@ -51,19 +52,25 @@ function AdressInput(props:InputComponentProps) {
     </Field.Label>
     <Group className="order-data__input-field">
       <Tooltip open={open} content=
-      {<div className="order-data__adress-input-tooltip">
-        {suggestions.map(suggestion=>
-          <Button className="order-data__adress-input-tooltip-button" key={suggestion.value} onClick={()=>props.setValue(suggestion.value)}>{suggestion.value}</Button>
-        )}
-      </div>}
-        >
-        <Input
-          onBlur={()=>setOpen(false)}
-          onFocus={openTooltip}
+        {<div className="order-data__adress-input-tooltip">
+          {suggestions.map(suggestion=>
+            <Button 
+              className="order-data__adress-input-tooltip-button" 
+              key={suggestion.value} 
+              onClick={()=>{
+                props.setValue(suggestion.value)
+                setOpen(false)
+            }}>{suggestion.value}</Button>
+          )}
+        </div>}
+      >
+          <Input
+            onBlur={()=>setOpen(false)}
+            onFocus={openTooltip}
 
-          value={props.value}
-          onChange={(e)=>inputAdress(e)}
-        />
+            value={props.value}
+            onChange={(e)=>inputAdress(e)}
+          />
       </Tooltip>
         <Button
           colorPalette={'blue'} 
