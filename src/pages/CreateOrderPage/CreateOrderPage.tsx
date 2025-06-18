@@ -62,7 +62,7 @@ function CreateOrderPage() {
   }
 
   function confirm(){
-    if (client && phone && deliveryDate && deliveryAddress && deliveryPrice) {
+    if (client && phone && deliveryDate && deliveryAddress) {
       dispatch(createOrder({
         client: client,
         phone: phone,
