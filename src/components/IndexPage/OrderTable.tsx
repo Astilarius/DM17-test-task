@@ -6,9 +6,8 @@ import { Button, ButtonGroup } from "@chakra-ui/react"
 import './OrderTable.css'
 
 function OrderTable() {
-  const orders = useAppSelector(state => state.orders.value);
-  console.log(orders)
-  const dispatch: AppDispatch = useAppDispatch();
+  const orders = useAppSelector(state => state.orders.value)
+  const dispatch: AppDispatch = useAppDispatch()
 
   return (
       <Table.Root className="show-orders__table">
