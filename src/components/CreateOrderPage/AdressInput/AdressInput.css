@@ -3,7 +3,14 @@
     width: 42px;
     height: 42px;
 }
-.order-data__copy-button img {
+.order-data__copy-button:hover {
+    color: invert(100%);
+    background-color: var(--button-color);
+}
+.order-data__copy-button:hover svg path {
+    stroke: white;
+}
+.order-data__copy-button svg {
     min-width: 24px;
 }
 .order-data__adress-input-tooltip {
